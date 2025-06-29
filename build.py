@@ -67,7 +67,7 @@ def install_dependencies(python_bin):
             "-m", "pip", "install", "torch==2.3.1",
             "--extra-index-url", "https://download.pytorch.org/whl/cu121"
         ]
-    subprocess.check_call(pip_command)
+        subprocess.check_call(pip_command)
     
     # 安装uv
     print("\nInstalling uv...")
