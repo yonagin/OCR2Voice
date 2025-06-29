@@ -112,7 +112,7 @@ def check_model_complete(model_path, repo_id):
     if not os.path.exists(os.path.join(model_path, "config.json")): 
         return False
         
-    for endpoint in [None, "https://hf-mirror.com"]:  # 先主站，后镜像
+    for endpoint in ["https://hf-mirror.com",None]:
         try:
             api = HfApi(endpoint=endpoint)
             repo_files = api.list_repo_files(repo_id=repo_id, repo_type="model")
@@ -135,15 +135,17 @@ def download_from_hf(model_path,repo_id, model_patterns=["*.bin"]):
     if not check_model_complete(model_path, repo_id):
         print(f"本地模型未在 '{model_path}' 找到。")
         endpoints_to_try = [
-            ("官方源 Hugging Face Hub", None),
-            ("国内镜像源 hf-mirror.com", "https://hf-mirror.com")
+             ("国内镜像源 hf-mirror.com", "https://hf-mirror.com"),
+            ("官方源 Hugging Face Hub", None)
+           
         ]
         
         download_successful = False
         base_patterns = [
-            "*.json",  # 配置文件
-            "*.txt",   # 必要的文本文件
-            "*.md"     # 说明文件
+            "*.model"
+            "*.json",  
+            "*.txt",   
+            "*.md"     
         ]
         
         allow_patterns = base_patterns + model_patterns
