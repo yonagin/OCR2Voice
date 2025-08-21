@@ -87,6 +87,7 @@ def install_dependencies(python_bin):
         "-m", "uv", "pip", "install",
         "-r", "requirements.txt",
         "--index-url", "https://mirrors.aliyun.com/pypi/simple/",
+         "--extra-index-url", "https://pypi.org/simple",
         "--trusted-host", "mirrors.aliyun.com"
     ])
 

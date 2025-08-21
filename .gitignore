@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+
+# Large model files and assets - DO NOT COMMIT THESE
+bert/
+model_assets/
+
+# IDE files
+.idea/
+.vscode/
